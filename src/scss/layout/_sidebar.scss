@@ -1,0 +1,31 @@
+@use "../abstracts/colors" as color;
+@use "../abstracts/mixins" as mixins;
+@use "../base/typografy" as font;
+@use "../componets/previewMessagge";
+@use "../componets/previewMessageActive";
+
+.sidebar-messages {
+	width: 25%;
+	height: 100vh;
+	position: fixed;
+	background: color.$primary-400;
+	display: inline-block;
+	overflow: hidden;
+	overflow-y: auto;
+	display: flex;
+	flex-direction: column;
+	& > * + * {
+		margin-top: 0.05em;
+	}
+
+	& > .preview {
+		@extend .previewMessage;
+		&:hover {
+			cursor: pointer;
+		}
+	}
+	& > .preview-active {
+		@extend .previewMessage-active;
+		cursor: pointer;
+	}
+}

@@ -1,0 +1,75 @@
+@use "../abstracts/colors" as color;
+@use "../abstracts/mixins" as mixins;
+@use "../base/typografy" as font;
+.previewMessage-active {
+	background: color.$primary-200;
+	min-height: 8.8rem;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+
+	padding: 0 0.5em;
+	& > .image__container {
+		width: 75px;
+		height: 75px;
+		border-radius: 50%;
+		// border: 1px solid red;
+		overflow: hidden;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	& > .description {
+		// border: 1px solid blue;
+		color: black;
+		font-family: font.$font-preview-300;
+		max-width: 75%;
+		min-height: 75px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		padding: 0.5em 0;
+		& > .description-title,
+		& > .description-mesagge {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+		& > .description-title > h3 {
+			font-family: font.$font-nombre-700;
+			font-weight: 700;
+			transition: 300ms ease opacity;
+		}
+		& > .description-title > span {
+			font-family: font.$font-hora-100;
+			font-weight: 100;
+		}
+		& > .description-mesagge > p {
+			max-width: 80%;
+			max-height: 2ch;
+			// border: 1px solid white;
+			overflow: hidden;
+			font-family: font.$font-preview-300;
+			font-weight: 300;
+			font-size: 1.1rem;
+			position: relative;
+			&::after {
+				content: "...";
+				position: absolute;
+				right: -5px;
+				bottom: 0;
+			}
+		}
+		& > .description-mesagge > div {
+			width: 20px;
+			height: 20px;
+			background: color.$primary-500;
+			border-radius: 55%;
+		}
+	}
+	&:hover .description > .description-title > h3 {
+		opacity: 0.3;
+	}
+}
